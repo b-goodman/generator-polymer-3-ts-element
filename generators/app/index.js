@@ -9,13 +9,13 @@ const validate = require('./node_modules/validate-element-name');
 
 module.exports = class extends Generator {
   async prompting() {
-    this.log(yosay(chalk.blue("New Polymer 3 Component")));
+    this.log(yosay(chalk.blue("New Polymer 3 Element")));
 
     const prompts = [
       {
         type: "input",
         name: "componentName",
-        message: "Name of component:",
+        message: "Name of element:",
         validate: (value) => {
           const isValid = validate(value);
           if (!isValid.isValid) {

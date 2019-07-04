@@ -5,11 +5,11 @@ const assert = require("../node_modules/yeoman-assert");
 const helpers = require("../node_modules/yeoman-test/lib");
 const util = require("../generators/util");
 
-describe("generator-polymer-3-ts-component:app", () => {
+describe("generator-polymer-3-ts-element:app", () => {
   it("creates files", () => {
     return helpers
       .run(path.join(__dirname, "../generators/app"))
-      .withPrompts({ componentName: "test-component", packageManager: "yarn" })
+      .withPrompts({ componentName: "test-element", packageManager: "yarn" })
       .then( () => {
         assert.file(util.templateToDestTuples.map(tuple => {
           return tuple[0];
@@ -17,7 +17,7 @@ describe("generator-polymer-3-ts-component:app", () => {
       })
   });
 
-  it("rejects invalid component names", () => {
+  it("rejects invalid element names", () => {
     return helpers
     .run(path.join(__dirname, "../generators/app"))
     .withPrompts({ componentName: "InvalidComponent", packageManager: "yarn" })
