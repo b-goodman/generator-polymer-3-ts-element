@@ -71,6 +71,6 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "git@github.com:b-goodman/web-components.git",
+  "repository": "git@github.com:b-goodman/generator-polymer-3-ts-element.git",
   "license": "Apache-2.0"
 }
