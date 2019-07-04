@@ -1,6 +1,6 @@
 {
   "name": "generator-polymer-3-ts-element",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Start a new Polymer 3 custom element using Typescript.",
   "author": {
     "name": "Ben Goodman",
