@@ -19,17 +19,6 @@ const templateToDestTuples = [
     ["src/typings.d.ts"]
 ];
 
-const reservedTagNames = [
-    "annotation-xml",
-    "color-profile",
-    "font-face",
-    "font-face-src",
-    "font-face-uri",
-    "font-face-format",
-    "font-face-name",
-    "missing-glyph"
-]
-
 module.exports = {
-    getClassName, templateToDestTuples, reservedTagNames
+    getClassName, templateToDestTuples
 }
