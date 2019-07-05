@@ -1,26 +1,27 @@
+/* eslint-disable prettier/prettier */
 "use strict";
-import Generator from "yeoman-generator";
-import { blue } from "chalk";
-import yosay from "yosay";
-import validate from "validate-element-name";
+const Generator = require("yeoman-generator");
+const chalk = require("chalk");
+const yosay = require("yosay");
+const validate = require('validate-element-name');
+const path = require("path");
+const util = require("./util/index.js");
 
-import { getClassName, templateToDestTuples } from "../util";
-
-export default class extends Generator {
+module.exports = class extends Generator {
   async prompting() {
-    this.log(yosay(blue("New Polymer 3 Element")));
+    this.log(yosay(chalk.blue("New Polymer 3 Element")));
 
     const prompts = [
       {
         type: "input",
         name: "componentName",
         message: "Name of element:",
-        validate: value => {
+        validate: (value) => {
           const isValid = validate(value);
           if (!isValid.isValid) {
             return isValid.message;
-          }
-          return true;
+          };
+            return true;
         }
       },
       {
@@ -32,24 +33,22 @@ export default class extends Generator {
     ];
 
     this.props = await this.prompt(prompts);
+
   }
 
   writing() {
-    const templateOptions = {
-      componentNameAsClass: getClassName(this.props.componentName),
-      componentName: this.props.componentName
-    };
 
-    templateToDestTuples.forEach(pathTuple => {
+    const templateOptions = {
+      componentNameAsClass: util.getClassName(this.props.componentName),
+      componentName: this.props.componentName
+    }
+
+    util.templateToDestTuples.forEach( (pathTuple) => {
       this.fs.copyTpl(
-        this.templatePath(pathTuple[0]),
-        this.destinationPath(
-          `${this.props.componentName}/${
-            pathTuple.length === 1 ? pathTuple[0] : pathTuple[1]
-          }`
-        ),
+        this.templatePath( pathTuple[0] ),
+        this.destinationPath( path.join( this.props.componentName, (pathTuple.length === 1) ? pathTuple[0] : pathTuple[1] ) ),
         templateOptions
-      );
+      )
     });
 
     this.fs.readJSON(this.destinationPath("package.json"));
@@ -64,4 +63,4 @@ export default class extends Generator {
     defaults[this.props.packageManager] = true;
     this.installDependencies(defaults);
   }
-}
+};

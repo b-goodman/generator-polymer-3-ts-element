@@ -68,7 +68,6 @@
     ]
   },
   "scripts": {
-    "pretest": "eslint .",
     "test": "jest"
   },
   "repository": "git@github.com:b-goodman/generator-polymer-3-ts-element.git",
