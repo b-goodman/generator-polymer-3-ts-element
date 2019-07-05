@@ -8,7 +8,7 @@ const getClassName = (componentName) => {
 const templateToDestTuples = [
     [".gitignore"],
     ["index.html"],
-    ["package.json"],
+    ["package.json.template", "package.json"],
     ["README.md"],
     ["tsconfig.json"],
     ["webpack.dvl.conf.template", "webpack.dvl.conf.js"],
